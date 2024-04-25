@@ -1,0 +1,6 @@
+curl https://www.segger.com/downloads/jlink/JLink_Linux_x86_64.tgz --data accept_license_agreement=accepted --output test.tgz
+
+
+
+this curl works
+looks like can mostly copy the derivation from nixpkgs but with updated version
