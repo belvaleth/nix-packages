@@ -1,4 +1,4 @@
-{ stdenv, lib, fetchurl, autoPatchelfHook }:
+{ stdenv, lib, fetchurl, zlib, glibc, autoPatchelfHook }:
 
 stdenv.mkDerivation rec {
   pname = "nrfutil";
@@ -13,11 +13,12 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ autoPatchelfHook ];
 
+  buildInputs = [ zlib glibc ];
+
   installPhase = ''
     runHook preInstall
     mkdir -p $out/bin
-    cp $src $out/bin
-    chmod +x $out/bin
+    install -m755 -D $src $out/bin
     runHook postInstall
   '';
 
